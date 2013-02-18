@@ -1,0 +1,6 @@
+[submodule "cookbooks/php"]
+	path = cookbooks/php
+	url = git://github.com/opscode-cookbooks/php.git
+[submodule "cookbooks/git"]
+	path = cookbooks/git
+	url = git://github.com/opscode-cookbooks/git.git
