@@ -2,7 +2,7 @@ Vagrant::Config.run do |config|
   config.vm.box = "precise32"
 
 
-  config.vm.forward_port 3000, 3000
+  config.vm.forward_port 3000, 3131
   config.vm.network :bridged
   config.vm.share_folder "app", "/home/vagrant/app", "app"
 
