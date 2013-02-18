@@ -18,7 +18,8 @@ Vagrant::Config.run do |config|
     chef.add_recipe "mongodb"
     chef.add_recipe "redis::server"
     chef.add_recipe "build-essential"
-    chef.add_recipe "nodejs::install_from_package"
+    chef.add_recipe "nodejs::install_from_source"
+    chef.add_recipe "nodejs::npm"
     chef.json = {
       "nodejs" => {
         "version" => "0.8.0",
