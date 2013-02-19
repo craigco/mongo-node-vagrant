@@ -1,14 +1,15 @@
 Vagrant::Config.run do |config|
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.host_name = "fxdev-vagrant"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   config.vm.forward_port 3000, 3131
   config.vm.network :bridged, "10.0.103.4"
-  config.vm.share_folder "app", "/home/vagrant/app", "app"
+  config.vm.share_folder "app", "/home/vagrant/app", "../../", :nfs => true
 
   # allow for symlinks in the app folder
   config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/app", "1"]
-  config.vm.customize ["modifyvm", :id, "--memory", 512]
+  config.vm.customize ["modifyvm", :id, "--memory", 1024]
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
@@ -22,8 +23,7 @@ Vagrant::Config.run do |config|
     chef.json = {
       "nodejs" => {
         "version" => "0.8.20",
-  "from_source" => true
-  #,"from_source" => true
+        "from_source" => true
       }
     }
   end
