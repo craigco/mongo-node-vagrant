@@ -15,16 +15,15 @@ Vagrant::Config.run do |config|
     chef.add_recipe "apt"
     chef.add_recipe "git"
     chef.add_recipe "php"
+    chef.add_recipe "build-essential"
     chef.add_recipe "mongodb"
     chef.add_recipe "redis::server"
-    chef.add_recipe "build-essential"
-    chef.add_recipe "nodejs::install_from_source"
-    chef.add_recipe "nodejs::npm"
+    chef.add_recipe "nodejs"
     chef.json = {
       "nodejs" => {
         "version" => "0.8.20",
-	"from_source" => true
-	#,"from_source" => true
+  "from_source" => true
+  #,"from_source" => true
       }
     }
   end
