@@ -1,9 +1,9 @@
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
-
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
   config.vm.forward_port 3000, 3131
-  config.vm.network :bridged
+  config.vm.network :bridged, "10.0.103.4"
   config.vm.share_folder "app", "/home/vagrant/app", "app"
 
   # allow for symlinks in the app folder
@@ -22,7 +22,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe "nodejs::npm"
     chef.json = {
       "nodejs" => {
-        "version" => "0.8.0",
+        "version" => "0.8.20",
 	"from_source" => true
 	#,"from_source" => true
       }
