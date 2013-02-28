@@ -5,7 +5,7 @@ Vagrant::Config.run do |config|
 
   config.vm.forward_port 3000, 3131
   config.vm.network :bridged, "10.0.103.4"
-  config.vm.share_folder "app", "/home/vagrant/app", "../../", :nfs => true
+  config.vm.share_folder "app", "/home/vagrant/app", "../../", :nfs => false
 
   # allow for symlinks in the app folder
   config.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/app", "1"]
