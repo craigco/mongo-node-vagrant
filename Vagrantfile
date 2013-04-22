@@ -19,6 +19,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe "build-essential"
     chef.add_recipe "mongodb"
     chef.add_recipe "nodejs"
+    chef.add_recipe "zeromq"
     chef.json = {
       "nodejs" => {
         "version" => "0.6.21",
