@@ -3,7 +3,7 @@ Vagrant::Config.run do |config|
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  config.vm.forward_port 3000, 3131
+  config.vm.forward_port 20999, 80
   config.vm.network :bridged, "10.0.103.33"
   config.vm.share_folder "app", "/opt/txtrproc/", "../src", :nfs => false
 
@@ -18,13 +18,13 @@ Vagrant::Config.run do |config|
     chef.add_recipe "php"
     chef.add_recipe "build-essential"
     chef.add_recipe "mongodb"
-    chef.add_recipe "nodejs"
-    chef.add_recipe "zeromq"
     chef.json = {
       "nodejs" => {
         "version" => "0.6.21",
         "from_source" => true
       }
     }
+    chef.add_recipe "nodejs"
   end
+  
 end
